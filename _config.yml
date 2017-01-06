@@ -1,0 +1,21 @@
+# Site settings
+title: Learn-ing From A New Angle
+header-img: img/home-bg.png
+email: michaelrburak@gmail.com
+copyright_name: MichaelBurak
+description: > # this means to ignore newlines until "baseurl:"
+  A blog about my trials and travails learning web development.
+baseurl: "" # the subpath of your site, e.g. /blog
+twitter_username: 
+github_username:  MichaelBurak
+learn_profile: MichaelBurak
+email_username: michaelrburak@gmail.com
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+paginate: 5
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+
+gems: [jekyll-paginate, jekyll-feed]
