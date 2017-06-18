@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Getting dirty with ActiveModel"
-date:   2017-06-18 14:43:54 +0000
+date:   2017-06-18 10:43:55 -0400
 ---
 
 
@@ -9,7 +9,7 @@ Something very important to any Rails application is one's models. The ways they
 
 I've been working on a Rails app designed to model making characters for a role-playing game and leveling them up through events that happen to them. The actual leveling up evolved over time in the application. As the characters were meant to level up and increase in attributes every time they crossed a threshold of 100 xp, the original implementation of leveling up was pretty simple:
 
-``` def add_event_xp
+```def add_event_xp
     self.xp += planner.events.last.xp
     until self.xp < 99
       level_up
