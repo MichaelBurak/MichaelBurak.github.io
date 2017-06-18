@@ -74,15 +74,12 @@ def validate_leveling_up
 	
 This was the implementation that first worked - adding a new boolean attribute to signify if a user had just leveled up, and using it to trigger the validation:
 
-
-
 ActiveRecord::Schema.define(version: 20170618125958) do
 
   create_table "characters", force: :cascade do |t|
     ...
 		t.boolean  "just_leveled_up"
   end 
-
 	
 	Then I added these lines of code to signify that a user had just leveled up, and that a user was done leveling up.
 	
