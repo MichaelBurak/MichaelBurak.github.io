@@ -67,7 +67,8 @@ def validate_leveling_up
       total += resistant_change
     end
     if total > 30
-      self.errors.add(:level, "Can't increase attributes by more than 30") ```
+      self.errors.add(:level, "Can't increase attributes by more than 30") 
+```
 	
 	This is when I learned more about validations than I was expecting. Specifically, that validations trigger when attributes are changed(not terribly new knowledge, but something I didn't fully expect the implications of), and that there's not a quick one line fix to limit a custom validation like validate_level_up to just one controller action. This lead to the very thorny situation that validating leveling up would trigger on the update action, including just editing a character. As I wanted users to be able to edit characters in a more free way, I had to find a workaround. 
 	
