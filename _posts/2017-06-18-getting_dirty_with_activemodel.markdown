@@ -72,7 +72,7 @@ def validate_leveling_up
 	
 	This is when I learned more about validations than I was expecting. Specifically, that validations trigger when attributes are changed(not terribly new knowledge, but something I didn't fully expect the implications of), and that there's not a quick one line fix to limit a custom validation like validate_level_up to just one controller action. This lead to the very thorny situation that validating leveling up would trigger on the update action, including just editing a character. As I wanted users to be able to edit characters in a more free way, I had to find a workaround. 
 	
-This was the implementation that first worked - adding a new boolean attribute to signify if a user had just leveled up, and using it to trigger the validation:
+This was the implementation that first worked - adding a new boolean attribute to signify if a user had just leveled up, and using it to trigger the validation.
 
 ActiveRecord::Schema.define(version: 20170618125958) do
 
