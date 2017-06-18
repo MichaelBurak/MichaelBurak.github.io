@@ -48,6 +48,7 @@ self.errors.add(:level, "Can't increase attributes by more than 30")
 
 However, if changes were not executed on one of the three attributes, this look for the change would return nil, preventing the method from working. Instead, I went back to a simple counter:
 
+
 ```
 def validate_leveling_up
     total = 0
@@ -67,15 +68,14 @@ def validate_leveling_up
       total += resistant_change
     end
     if total > 30
-      self.errors.add(:level, "Can't increase attributes by more than 30") 
-```
+      self.errors.add(:level, "Can't increase attributes by more than 30")
 	
 	This is when I learned more about validations than I was expecting. Specifically, that validations trigger when attributes are changed(not terribly new knowledge, but something I didn't fully expect the implications of), and that there's not a quick one line fix to limit a custom validation like validate_level_up to just one controller action. This lead to the very thorny situation that validating leveling up would trigger on the update action, including just editing a character. As I wanted users to be able to edit characters in a more free way, I had to find a workaround. 
 	
 This was the implementation that first worked - adding a new boolean attribute to signify if a user had just leveled up, and using it to trigger the validation:
 
 
-```
+
 ActiveRecord::Schema.define(version: 20170618125958) do
 
   create_table "characters", force: :cascade do |t|
@@ -101,6 +101,7 @@ if total > 30
       self.errors.add(:level, "Can't increase attributes by more than 30")
       self.update_attribute(:just_leveled_up, nil)
 ```
+
 			
 Finally, I limited the validation to when :justleveledup was truthy and on the update action to make sure it was only triggering on an update(the action in my controller that updates a leveled character), and only that one in specific. 
 
