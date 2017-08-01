@@ -49,7 +49,8 @@ self.errors.add(:level, "Can't increase attributes by more than 30")
 However, if changes were not executed on one of the three attributes, this look for the change would return nil, preventing the method from working. Instead, I eventually settled on passing the event through the method, assigning a value of 30 to an attribute representing spendable points each time a character leveled up, and checking if the attributes have changed using an if statement. This would form the core of the validation.
 
 
-```def validate_leveling_up
+```
+def validate_leveling_up
     total = 0
     subtle = self.changes[:subtle]
     powerful = self.changes[:powerful]
@@ -71,7 +72,8 @@ However, if changes were not executed on one of the three attributes, this look 
     else
       self.errors.add(:base, "Can't increase attributes by more than 30 per level added")
     end
-  end```
+  end
+	```
 	
 	This is when I learned more about validations than I was expecting. Specifically, that validations trigger when attributes are changed(not terribly new knowledge, but something I didn't fully expect the implications of), and that there's many ways of limiting them. Without additional changes, this lead to the very thorny situation that validating leveling up would trigger on the update action, including just editing a character. As I wanted users to be able to edit characters in a more free way in addition to leveling them up, I had to find a workaround. 
 	
@@ -79,18 +81,23 @@ To do this, I would confirm that a character had just leveled up, and explicitly
 
 In my model, I added this method: 
 
-```def just_leveled_up?
+```
+def just_leveled_up?
     spendable_points > 0
-  end```
+  end
+	```
 	
 Additionally, I set an attribute accessor to call upon in the controller to skip the validation. 
 
-```attr_accessor :skip_level_validation```
+```
+attr_accessor :skip_level_validation
+```
 
 
 In my controller, I set up actions to add experience to a character, select their attributes(including calling an attribute_ceiling method which would represent and display how much a user could raise attributes by), and level up, along with skipping the validation on a regular update.
 
-```def update
+```
+def update
     @character.skip_level_validation = true
       if @character.update(character_params)
         redirect_to @character, notice: 'Character was successfully updated.'
@@ -120,12 +127,15 @@ In my controller, I set up actions to add experience to a character, select thei
       else
         render 'attribute_selection'
       end
-    end```
+    end
+		```
 		
 In the end, the validation itself looked like this:
 
-```validate :validate_leveling_up, :on => :update, if: :just_leveled_up?,
-           unless: :skip_level_validation```
+```
+validate :validate_leveling_up, :on => :update, if: :just_leveled_up?,
+           unless: :skip_level_validation
+```
 
 In conclusion, ActiveModel:Dirty allows for the tracking of attributes, and was essential to implementing a much-desired feature in my app. This simple leveling up system limited by the amount one can change attributes by could be expanded or modified in different ways, but provides an example of the power of ActiveModel:Dirty's tracking of changes, something I didn't know about and wasn't expecting to use before starting this project. 
 
