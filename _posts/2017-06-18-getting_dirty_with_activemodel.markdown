@@ -73,7 +73,7 @@ def validate_leveling_up
       self.errors.add(:base, "Can't increase attributes by more than 30 per level added")
     end
   end
-	```
+```
 	
 	This is when I learned more about validations than I was expecting. Specifically, that validations trigger when attributes are changed(not terribly new knowledge, but something I didn't fully expect the implications of), and that there's many ways of limiting them. Without additional changes, this lead to the very thorny situation that validating leveling up would trigger on the update action, including just editing a character. As I wanted users to be able to edit characters in a more free way in addition to leveling them up, I had to find a workaround. 
 	
@@ -85,7 +85,7 @@ In my model, I added this method:
 def just_leveled_up?
     spendable_points > 0
   end
-	```
+```
 	
 Additionally, I set an attribute accessor to call upon in the controller to skip the validation. 
 
@@ -128,7 +128,7 @@ def update
         render 'attribute_selection'
       end
     end
-		```
+```
 		
 In the end, the validation itself looked like this:
 
