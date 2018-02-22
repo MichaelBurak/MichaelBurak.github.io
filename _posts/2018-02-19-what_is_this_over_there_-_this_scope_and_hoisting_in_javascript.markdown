@@ -1,7 +1,7 @@
 ---
 layout: post
-title:      "WHAT IS ‘THIS’ OVER THERE? - THIS, SCOPE AND HOISTING IN JAVASCRIPT"
-date:       2018-02-19 21:38:23 +0000
+title:      "WHAT IS 'this’ OVER THERE? - THIS, SCOPE AND HOISTING IN JAVASCRIPT"
+date:       2018-02-19 16:38:23 -0500
 permalink:  what_is_this_over_there_-_this_scope_and_hoisting_in_javascript
 ---
 
