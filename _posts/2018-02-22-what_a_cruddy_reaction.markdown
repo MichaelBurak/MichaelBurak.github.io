@@ -1,59 +1,44 @@
 ---
 layout: post
 title:      "What a CRUDdy REACTion"
-date:       2018-02-22 19:54:52 +0000
+date:       2018-02-22 14:54:53 -0500
 permalink:  what_a_cruddy_reaction
 ---
 
-# WORKING TITLE
-intro
--
-## SECTION 1 - PROJECT
-- what this section is about
-	-LIST OF Original ideas 
-	-Settled on more basic  app to work on fundamentals 
-	-Notepad as EverNote is a beloved app and inspiration, but much simpler. Aimed to do Autosave.
-	-General CRUD Structure of app. Create reading updating deleting Notes.
-- why it matters
-	-CRUD is super important , it’s basically all we do with data/all we do at all.
-	-A simple app in my opinion can be beautifully coded and a lot learned form making one , also they evolve complexity from simplicity as you think of new things to implement vs. taking on a huge project at once.
-	-Culminating with a simple project vs. one I would rabbit hole on is prep for workplace and focusing on discrete tasks and desired output.
-- research or examples
-	-Early code snippets from early commits 
-- takeaways
-	-Beginning to build a simple app can be daunting(blank page syndrome)
-	-Did a CRUD app as CRUD seems essential and can (as seen in future sections) be a little complex in React/Redux. 
-## SECTION 2 - PROCESS
-- what this section is about
-	-Evolution of the project, look over how code has changed, read many commits and describe general flow. 
-	-Mention wrangling with autosave as a ‘neat feature’ but not ‘essential’
-	-How much this taught me about React + Redux.
-- why it matters
-	-Building an app from scratch is a time tested way to better learn a language and this bore fruit. 
-- research or examples
-	-On learning: handling state and props better throughout project
-	-On learning: Implementing proper action/reducer interactions and proper Redux state management
-	-On learning: Timeouts and JS timing with autosave attempts.
-- takeaways
-	-Learned [specific things] about React + Redux and wiring front and backend with it. 
-	-Saw the importance of prioritizing core features over ’neat features’ 
-	-React + Redux may be a framework but it is a JS framework and working with it helped me understand JS more, such as ‘this’
-## SECTION 3 - PROJECT
-- what this section is about
-	-Ended up with a elegant CRUD app 
-	-Did not include some features to be added later for simplicity and to focus on React + Redux knowledge vs. say wrangling with Devise in Rails for authentication(do not have authentication/users/admins/etc.)
-	-Autosave might not even be a thing after all. And that’s okay. Maybe later.
-- why it matters
-	-CRUD apps and implementing CRUD properly demonstrate coding proficiency in a language. 
-	-A simple app can expose coding strengths and vulnerabilities through being easier to read. (Note comments.)
-	-In the end, development in the workplace has deadlines and important features and the like, stuff like autosave isn’t crucial unless it is.
-- research or examples
-	-Finished code snippets to compare directly to earlier code snippets
-	-Link to walkthrough video 
-- takeaways
-	-I found designing even a simple CRUD app in an evolving language like React to have its own enlightening and occasionally frustrating moments. 
-	-Much was learned about React and JS. 
-	-Between React, Redux, Rails, JS, CSS, HTML and DB interactions, it was a big culmination of everything learned at Flatiron. 
-***
-conclusion
-	-
+In completing my schooling at Flatiron and being challenged to spin up a modern single page app with a React-Redux frontend and Rails backend, I started overwhelmed by the possibilities, and ended up settling on a rather simple but expandable in the future to be more fully featured basic data manipulation - CRUD - app. 
+
+At first I thought about interacting with a novel API and doing some data work and analytics. I have a background in the social sciences through a Political Science B.A. and thought working with census data would be interesting. However, some of the data was lacking on the parts that most interested me to work with, and I felt designing an API instead of working with an external one might be more fruitful for my overall coding skills. I also thought about work with game theory, though it occurred to me that coding up logic and even some AI was less exemplifying what’s interesting and best to know about React especially(as I’d done two projects with Rails backends, I felt more desire to focus on React and Redux) as a framework. 
+
+In the end, I settled on a notepad app, as EverNote is a beloved piece of tech that has helped me be more organized, including in my note taking and learning throughout my time at Flatiron! I will admit that that aspect did make it appealing: basing something off the fundamental concept of taking notes, which was key to my learning process in becoming a skilled entry level web developer.
+
+A simple app in my opinion can be elegantly coded and a lot learned from making them. A simple app at first can also involve evolving complexity from simplicity as one brainstorms new features to implement vs. taking on a huge project that might be overwhelming at once from nothing. 
+
+Culminating with a simple compared to one I might fall into many rabbit holes and do too much with when I was focused on really learning the fundamentals of modern front-end JavaScript I also felt was a good preparation for a workplace environment and focusing on discrete tasks with desired results. 
+
+In the beginning of creating the app, I had to make some choices. I for example chose to forgo user authentication, even though a production app for mass consumption would need such a thing, to focus on the code and learning. Building a simple CRUD app is a real test when working with a new framework or language and I wanted to tackle those 4 ways of working with data well and first of all. 
+
+I learned a lot about features in personally designing a project, something that’s my own, and what to do, what to keep, what to have in the wings as a possibility with either pseudo-code or the basis of code or full code to be merged in later from in this case another GitHub branch. The biggest albatross, something I spent a literal day agonizing over but learning a lot about React and about JS itself, especially timing of events and the lifecycle of a React component, was attempting to implement autosave - the idea that when editing a Note in the notepad application, every 30 seconds a check would run to see if the note had been changed from 30 seconds before, and if so, it would save, in addition to manual saves, as I quite appreciate the work I’ve avoided losing thanks to autosave in various programs I have used. 
+
+However, it was rough going. There are ways of doing it but many require packages and other things that I didn’t want to focus on vs. more basic React, Redux and Rails. In the end, I learned something important: a ‘neat feature’ is not necessary essential or important to implement every time. I will later be updating this project and including autosave however. 
+
+As far as the process, I learned an immense amount about React and Redux and even just JS through coding from a blank slate. At first and even in some ways a bit before finishing up what I felt was a good first draft of the app, I didn’t fully understand how to best utilize props and state. 
+
+One of the best ways I found to wrap my head around props, state, when to use what, how they interact and their differences and similarities was actually to build test cases wherein the Redux store would pass parts of its monolithic state to props via the mapStateToProps built into connect in Redux, and then change and debug a page to see what made the most sense, was most elegant and best performance, in both whether to display or change things with local state or to use Redux actions that were wired to the reducer to change the state that would then be mapped to props. I credit one of the wonderful members of the Learn team, Enoch, with finally helpings state and props and all their weirdness - especially how to deal with the asynchronous batched nature of setState() in changing the state and it’s boons and perils - finally click for me, and in general, for an immense amount of very skilled support in my coding journey, not just properly setting up the use of props and state through calling the appropriate things at the appropriate place and time and using action/reducer interactions to manage the Redux store. 
+
+I also learned a ton about timing in JS core and React. Implementing autosave, or attempting to, taught me a lot about setting intervals and clearing them, including things like how to clear an interval there must be a reference of the interval itself to clear, and how this can get complex in React but can also be elegantly handled through state and lifecycle methods. 
+
+In general the things I learned the most about were the basics of React and Redux and how to program competently in the framework, timing in JS core such as scope and ‘this’ and front end frameworks, and a more practical lesson about workflow and not getting caught up on that ‘neat feature’ to the expense of the overall project. 
+
+What I ended up with was a reasonably simple, elegant CRUD app, with minimal styling and some small features that I consider helpful or good for UI and UX such as a local state countdown to when a page will, on timer, re-render through the use of history back to say the index. It honestly felt rather wrong to have the set up on creation, deletion and editing that the new/deleted/updated note would be shown to a user and then the user be informed that in 10 seconds the DOM would re-render but have a user stare at a page that said ’10 seconds’ for 10 seconds instead of watching it count down. That’s just more satisfying on a basic level. 
+
+I feel that CRUD apps and implementing CRUD properly is a very key way to learn and demonstrate proficiency especially in a new language or framework. A simple app can expose coding strength and vulnerabilities through being easier to read, especially if well commented by those coding it. 
+
+In the end, it was really a culmination of everything I had learned at Flatiron, and it makes me realize my appreciation for the design of the course that it is designed so. I learned well how to utilize and incorporate a cutting edge front end framework, I used JavaScript, the dependable and delightful to code backend of Rails, dealt with HTML and SQL in display and database manipulation and interactions, it all sort of made sense by the end of it in a holistic way, and the project in a lot of ways was the easiest project, in that Learn had…taught me how to Learn how to code and pick up new skills, more strongly and helpfully than just any specific language. 
+
+I chose to not include code in this blog post very intentionally. I believe the code of the app speaks for itself, especially with it being currently rather commented and more comments to be added, as well as its likely evolution as a project after graduation from Flatiron. I would prefer it be read on GitHub or utilized when hosted on Heroku. I honestly couldn’t fit in coding snippets of everything pertinent that I had learned. I would write a veritable book despite the actual relatively small amount of lines of code the app ended up with, and though my favorite author is Joyce and my favorite book is the extremely large and complicated Finnegans Wake, I am no Joyce, and this blog post never had any chance of being as funny and complex to keep a reader’s interest as the Wake is. 
+
+I want to thank so many people for helping in my journey at Flatiron. Every section lead and instructor, every cohort who helped either in formal study groups or taking time out of their days to help learn to code together, a practice I find truly beautiful and communal, my wonderful partner Monique for constant support, my friends, even Avi for not just bigger picture program stuff but for personally being kind and helpful with even small specific difficult code I encountered on slack, I could go on and on. But like specific code, specific thanks would go on too long and I know I would forget important figures in this journey.
+
+I feel proud of what is essentially a rather simple app that can and will be expanded on to be more fully featured, in that I feel it demonstrates the core of the languages involved and my abilities in them. I also feel proud of my time at Flatiron, and that I took the first admittedly terrifying steps into going from the social sciences and humanities into the tech field, that I chose this program.
+
+I can not wait for what comes next. 
