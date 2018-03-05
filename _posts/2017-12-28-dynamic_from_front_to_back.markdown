@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Dynamic, From Front To Back"
-date:       2017-12-28 21:37:19 +0000
+date:       2017-12-28 16:37:20 -0500
 permalink:  dynamic_from_front_to_back
 ---
 
@@ -18,6 +18,7 @@ I didn’t really have an exact plan beyond what the specifications of the proje
 
 One thing that was implemented early was on the show page of an individual character, the webpage that would display information about a character. I decided to allow users to sift through the database’s characters using next and back buttons. This was accomplished by first setting up a JSON serializer using the gem Active Model Serializers, transforming data into JSON, and then telling Rails’ Controller for Characters that when showing a character’s JSON, to show the appropriate data in that format. 
 
+```
 (serializers/character_serializer.rb)
 
 class CharacterSerializer < ActiveModel::Serializer
@@ -84,6 +85,7 @@ def show
         });
       })
     });
+		```
 
 To put it simply, this is teaching Rails to display a special JSON API endpoint with JSON data, then creating jQuery that triggers when the buttons with the appropriate class are clicked to either display the next or previous character in order, while keeping track of what character is currently being displayed in order to correctly display after a second click of the next or previous button. 
 
@@ -93,6 +95,7 @@ The other core technique I utilized and learned about was JS model objects. To u
 
 To do this, I set up a new route and page for the character controller to interact with that would contain only the relevant information in JSON format, added a button to introspect on to the index page, and implemented the appropriate javascript to dynamically display this information when the appropriate button was clicked by creating and displaying a prototype.
 
+```
 (routes.rb)
 get 'characters/:id(.:format)/expand', to: 'characters#expand'
 
@@ -137,5 +140,6 @@ def expand
       expandedCharacter.expand()
      });
    })
+	 ```
 
 These core concepts of displaying information by wiring up the front end and back end in different languages to work together are important for full stack web application development, and were wonderful to program and implement - there is nothing like the satisfaction of a dynamic feature, finally debugged and working, upon that first click displaying the right information. 
