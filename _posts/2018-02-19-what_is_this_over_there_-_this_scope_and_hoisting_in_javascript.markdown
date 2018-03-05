@@ -38,7 +38,8 @@ Once JS becomes more complex, like using node modules, however, this can and doe
 
 One of the most important uses of this is inside a function. In that case, this contains the value of the object that invokes a function. 
 
-```var a = {
+```
+var a = {
    b   :"B",
    c    :"C",
    display:function () {
@@ -68,7 +69,8 @@ a.display.apply(d)
 
 The situation gets a bit more tricky in use cases like closures however. 
 
-``` var a = {
+``` 
+var a = {
     letters: [
         {
             b: "B"
